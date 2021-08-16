@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Area of Regular Polygons Calculator</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
+		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1c07c1" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--Scripts-->
+		<script src="../js/jCode-2.5.js"></script>
+		<script>
+			$.include('js','../js/main.js','../js/logo.js');
+		</script>
+	</head>
+	<body>
+		<!--Nav interactants-->
+		<div id="navBTN">
+			<div id="bar1"></div>
+			<div id="bar2"></div>
+			<div id="bar3"></div>
+		</div>
+		<div id="wrapper">
+			<!--Nav-->
+			<nav id="mobiNav">
+				<div class="topNav">
+					<a href="javascript:void(0);" id="closeNav">X</a>
+					<a href="../index.html">Home</a>
+					<a href="../idea.html">Ideas</a>
+					<a href="../knowledge.html">Knowledge</a>
+					<a href="../faq.html">FAQ</a>
+					<a href="../about.html">About Us</a>
+					<a href="../register.html">Sign Up</a>
+					<a href="../login.html">Login</a>
+				</div>
+				<div class="bottomNav">
+				</div>
+			</nav>
+			<!--Non-mobile Nav-->
+			<nav id="largeNav">
+				<a href="../index.html">Home</a>
+				<a href="../idea.html">Ideas</a>
+				<a href="../knowledge.html">Knowledge</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../about.html">About Us</a>
+				<a href="../register.html">Sign Up</a>
+				<a href="../login.html">Login</a>
+			</nav>
+			<!--Header-->
+			<header>
+				<h1>Knowledge</h1>
+				<canvas id="logo">
+					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+				</canvas>
+				<center>
+					<canvas id="mobilogo">
+						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+					</canvas>
+				</center>
+			</header>
+			<!--Content-->
+			<section id="content">
+				<div>
+					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
+				</div>
+				<div>
+					<h3>Area of Regular Polygons</h3>
+					<span>Please choose which part of the polygon you have the measurement for:</span><br><br>
+					<label for="base">Base</label><input type="radio" name="measure" id="base" checked />
+					<label for="height">Height</label><input type="radio" name="measure" id="height" />
+					<label for="hyp">Hypotenuse</label><input type="radio" name="measure" id="hyp" /><br><br>
+					<span>Now choose if you want to use the measurment for reversing the process (Meaning input area and sides):<br><label for="reverseARP">Reverse Area (Find the base, height, or hypotenuse of the inner triangle)</label><input type="checkbox" id="reverseARP" /></span><br><br>
+					<span>Input the measurement it is. Please note that this only compiles the data into an area answer, it will not convert if conversion is needed. Also, you must input side number otherwise this will not know. You are basing height and base length off of the trianlges within the shape (Must be a regular shape to work correctly).</span><br><br>
+					<label for="polyNum">Number: </label><input type="text" id="polyNum" /> | <label for="polySide">Sides: </label><input type="text" id="polySide" /><br><br>
+					<a href="javascript:void(0);" id="polySub">Submit</a>
+					<p id="polyOut">Answer: 0</p>
+					<p id="testTrig"></p>
+					<script>
+						(function(){
+							//Function to solve for specific area
+							function solveArea(type) {
+								//Take the side number and save the central and base angles to variables
+								var n = document.getElementById('polySide').value;
+								if(n <= 3) {
+									console.log('Shape not valid');
+									$('#polyOut').html('Doesn\'t work');
+									return false;
+								} 
+								var centralAngle = 360/n,
+									baseAngle = 90 - (centralAngle/2);
+								var base,rightBase,height,area,hyp,radArea,perimeter;
+								console.log("CA = " + centralAngle.toFixed(2));
+								console.log("BA = " + baseAngle.toFixed(2));
+								if(type === 0) {
+									//Base is here, solve for height
+									base = document.getElementById('polyNum').value;
+									rightBase = base/2;
+									height = $.math.tan(baseAngle) * rightBase;
+									area = ((base * height) / 2) * n;
+									perimeter = base * n;
+									hyp = height/$.math.cos(centralAngle/2);
+									$('#polyOut').html("Height = " + height.toFixed(8) + "<br>Base = " + base + "<br>Right Triangle Base = " + rightBase.toFixed(8) + "<br>Hypotenuse = " + hyp.toFixed(8) + "<br>Perimeter = " + perimeter.toFixed(8) + "<br>Area = " + area.toFixed(8));
+									console.log("Height = " + height.toFixed(8) + "\nBase = " + base + "\nRight Triangle Base = " + rightBase.toFixed(8) + "\nHypotenuse = " + hyp.toFixed(8) + "\nPerimeter = " + perimeter.toFixed(8) + "\nArea = " + area.toFixed(8));
+								} else if(type === 1) {
+									//We have the height, solve for base
+									height = document.getElementById('polyNum').value;
+									rightBase = height / $.math.tan(baseAngle);
+									base = rightBase * 2;
+									area = ((base * height)/2) * n;
+									perimeter = base * n;
+									hyp = height/$.math.cos(centralAngle/2);
+									$('#polyOut').html("Height = " + height + "<br>Base = " + base.toFixed(8) + "<br>Right Triangle Base = " + rightBase.toFixed(8) + "<br>Hypotenuse = " + hyp.toFixed(8) + "<br>Perimeter = " + perimeter.toFixed(8) + "<br>Area = " + area.toFixed(8));
+									console.log("Height = " + height + "\nBase = " + base.toFixed(8) + "\nRight Triangle Base = " + rightBase.toFixed(8) + "\nHypotenuse = " + hyp.toFixed(8) + "\nPerimeter = " + perimeter.toFixed(8) + "\nArea = " + area.toFixed(8));
+								} else if(type === 2) {
+									//We have the hypotenuse, solve for height and base (preferred cos)
+									hyp = document.getElementById('polyNum').value;
+									console.log("Half CA = " + (centralAngle/2).toFixed(2));
+									rightBase = $.math.cos(baseAngle) * hyp;
+									base = rightBase * 2;
+									centralAngle = centralAngle/2;
+									height = $.math.cos(centralAngle) * hyp;
+									area = ((base * height)/2) * n;
+									perimeter = base * n;
+									$('#polyOut').html("Height = " + height.toFixed(8) + "<br>Base = " + base.toFixed(8) + "<br>Right Triangle Base = " + rightBase.toFixed(8) + "<br>Hypotenuse = " + hyp + "<br>Perimeter = " + perimeter.toFixed(8) + "<br>Area = " + area.toFixed(8));
+									console.log("Height = " + height.toFixed(8) + "\nBase = " + base.toFixed(8) + "\nRight Triangle Base = " + rightBase.toFixed(8) + "\nHypotenuse = " + hyp + "\nPerimeter = " + perimeter.toFixed(8) + "\nArea = " + area.toFixed(8));
+								} else if(type === 3) {
+									//We will reverse the process for base of the shape
+									area = document.getElementById('polyNum').value;
+									var triArea = area/n;
+									base = "Not Avaibale";
+									$('#polyOut').html("Answer: " + base + " units");
+								} else if(type === 4) {
+									//We will reverse the process for the height of the shape
+									area = document.getElementById('polyNum').value;
+									var triArea = area/n;
+									height = "Not Avaibale";
+									$('#polyOut').html("Answer: " + height + " units");
+								} else if(type === 5) {
+									//We will reverse the process for the hyp of the shape
+									area = document.getElementById('polyNum').value;
+									var triArea = area/n;
+									hyp = "Not Avaibale";
+									$('#polyOut').html("Answer: " + hyp + " units");
+								}
+							}
+							//Make the missing side
+							$('#polySub').click(function(){
+								if(document.getElementById('reverseARP').checked && document.getElementById('base').checked) {
+									solveArea(3);
+								} else if(document.getElementById('reverseARP').checked && document.getElementById('height').checked) {
+									solveArea(4);
+								} else if(document.getElementById('reverseARP').checked && document.getElementById('hyp').checked) {
+									solveArea(5);
+								} else if(document.getElementById('base').checked) {
+									solveArea(0);
+								} else if(document.getElementById('height').checked) {
+									solveArea(1);
+								} else if(document.getElementById('hyp').checked) {
+									solveArea(2);
+								}
+							});
+						})();
+					</script>
+				</div>
+			</section>
+			<!--Footer-->
+			<footer>
+				<div class="social-w3lsicon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+				</div>
+			</footer>
+		</div><!--Wrapper End-->
+	</body>
+</html>

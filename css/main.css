@@ -11,8 +11,8 @@ html, body {
 	width: 100%;
 	height: 100%;
 	background: #555;
-    color: #a60;
+    color: #eee;
 }
-div {margin: 5em 0.5em;padding: 5px;}
-a, a:visited {display: inline-block; text-decoration: none; color: #b80; font-weight: bold; transition: all 0.5s ease;}
-a:hover {font-weight: bolder; font-size:1.2em;}
+div {margin: 0.5em 5em;padding: 5px;}
+a, a:visited {display: inline-block; text-decoration: none; color: #b80; font-weight: 100; transition: all 0.5s ease;}
+a:hover {font-weight: 900; font-size:1.2em;}

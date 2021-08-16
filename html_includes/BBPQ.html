@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Bracket Debugger</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
+		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1c07c1" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--Scripts-->
+		<script src="../js/jCode-2.5.js"></script>
+		<script>
+			$.include('js','../js/main.js','../js/logo.js');
+		</script>
+	</head>
+	<body>
+		<!--Nav interactants-->
+		<div id="navBTN">
+			<div id="bar1"></div>
+			<div id="bar2"></div>
+			<div id="bar3"></div>
+		</div>
+		<div id="wrapper">
+			<!--Nav-->
+			<nav id="mobiNav">
+				<div class="topNav">
+					<a href="javascript:void(0);" id="closeNav">X</a>
+					<a href="../index.html">Home</a>
+					<a href="../idea.html">Ideas</a>
+					<a href="../knowledge.html">Knowledge</a>
+					<a href="../faq.html">FAQ</a>
+					<a href="../about.html">About Us</a>
+					<a href="../register.html">Sign Up</a>
+					<a href="../login.html">Login</a>
+				</div>
+				<div class="bottomNav">
+				</div>
+			</nav>
+			<!--Non-mobile Nav-->
+			<nav id="largeNav">
+				<a href="../index.html">Home</a>
+				<a href="../idea.html">Ideas</a>
+				<a href="../knowledge.html">Knowledge</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../about.html">About Us</a>
+				<a href="../register.html">Sign Up</a>
+				<a href="../login.html">Login</a>
+			</nav>
+			<!--Header-->
+			<header>
+				<h1>Knowledge</h1>
+				<canvas id="logo">
+					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+				</canvas>
+				<center>
+					<canvas id="mobilogo">
+						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+					</canvas>
+				</center>
+			</header>
+			<!--Content-->
+			<section id="content">
+				<div>
+					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
+				</div>
+				<div>
+					<center>
+						<h1>Braces, Brackets, Parantheses, and Quotes Finder</h1>
+						<p>Instructions: Input any code, and this will find if you have missing quotes or too many/little opening/closing brackets. You must check the box that applies to your liking, i.e. Select the brackets box if you want to check brackets.</p>
+						<p><strong>NOTE: </strong>This web application doesn't identify where the mistake took place, that part is a work in progress and will be up later!</p>
+						<div style="width: 50%;border: 2px solid darkred; padding: 25px;">
+							<label for="braces">Braces: </label><input type="radio" name="BBPQ" id="braces" checked />
+							<label for="brackets">Brackets: </label><input type="radio" name="BBPQ" id="brackets" />
+							<label for="paranthesis">Parantheses: </label><input type="radio" name="BBPQ" id="paranthesis" />
+							<label for="quote">Quotes: </label><input type="radio" name="BBPQ" id="quote" /><br><br><br>
+							<input type="text" id="BBPQin" />
+							<a href="javascript:void(0);" id="submitBBPQ" class="Flat">Evaluate</a>
+							<p id="BBPQout"></p>
+						</div>
+					</center>
+					<script>
+						(function(){
+							//Set global variables
+							var count = 0;
+							
+							//Provide regex of text to be split up into arrays
+							function findText(find) {
+								var text = document.getElementById('BBPQin').value,i = 0, output = document.getElementById("BBPQout");
+								find = find.split(" ");
+								while(i < text.length) {
+									if(text.substring(i,i+1) === null) {break;}
+									//Run through text for the first set of what to find
+									if(find[0] === text.substring(i,i+1)) {
+										count++;
+									} else if(find[1] == text.substring(i,i+1)) {
+										count--;
+									}
+									i++;
+								}
+								output.innerHTML = "Errors found - " + count;
+								count = 0; //Reset after showing errors
+							}
+							$('#submitBBPQ').click(function(){
+								//Build function to check checkbox
+								if(document.getElementById('braces').checked) {
+									findText('{ }');
+								} else if(document.getElementById('brackets').checked) {
+									findText('[ ]');
+								} else if(document.getElementById('paranthesis').checked) {
+									findText('( )');
+								} else if(document.getElementById('quote').checked) {
+									findText('\' "');
+								}
+							});
+						})();
+					</script>
+				</div>
+			</section>
+			<!--Footer-->
+			<footer>
+				<div class="social-w3lsicon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+				</div>
+			</footer>
+		</div><!--Wrapper End-->
+	</body>
+</html>

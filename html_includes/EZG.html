@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>EZ-Grader</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
+		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1c07c1" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--Scripts-->
+		<script src="../js/jCode-2.5.js"></script>
+		<script>
+			$.include('js','../js/main.js','../js/logo.js');
+		</script>
+	</head>
+	<body>
+		<!--Nav interactants-->
+		<div id="navBTN">
+			<div id="bar1"></div>
+			<div id="bar2"></div>
+			<div id="bar3"></div>
+		</div>
+		<div id="wrapper">
+			<!--Nav-->
+			<nav id="mobiNav">
+				<div class="topNav">
+					<a href="javascript:void(0);" id="closeNav">X</a>
+					<a href="../index.html">Home</a>
+					<a href="../idea.html">Ideas</a>
+					<a href="../knowledge.html">Knowledge</a>
+					<a href="../faq.html">FAQ</a>
+					<a href="../about.html">About Us</a>
+					<a href="../register.html">Sign Up</a>
+					<a href="../login.html">Login</a>
+				</div>
+				<div class="bottomNav">
+				</div>
+			</nav>
+			<!--Non-mobile Nav-->
+			<nav id="largeNav">
+				<a href="../index.html">Home</a>
+				<a href="../idea.html">Ideas</a>
+				<a href="../knowledge.html">Knowledge</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../about.html">About Us</a>
+				<a href="../register.html">Sign Up</a>
+				<a href="../login.html">Login</a>
+			</nav>
+			<!--Header-->
+			<header>
+				<h1>Knowledge</h1>
+				<canvas id="logo">
+					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+				</canvas>
+				<center>
+					<canvas id="mobilogo">
+						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+					</canvas>
+				</center>
+			</header>
+			<!--Content-->
+			<section id="content">
+				<div>
+					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
+				</div>
+				<div>
+					<center>
+						<h3 style="font-size: 18pt;">The EZ Grader</h3>
+						<h4>Alert Box Override by Steve Chipman, Grading function by Carter Ervin</h4>
+						<h5>This doesn't take and memorize what you input, it is used to tell you your estimated grade before it gets to the gradebook</h5>
+						<p style="display: inline-block; border: 2px solid darkred; border-radius: 10px; padding: 10px 10px 10px 10px; margin: 10px 10px 20px 10px; background-color: #3db67a; color: black;">
+							<label for="grade">Enter Points: </label><input type="text" size="3" name="grade" id="grade" style="margin-bottom: 5px;" /><br>
+							<label for="outof">Out of: </label><input type="text" size="3" id="outof" name="outof" style="margin-bottom: 5px;" /><br>
+							<input type="radio" id="homework" name="gradeType" checked /><label for="homework">Homework Grade</label><br>
+							<input type="radio" id="testGrade" name="gradeType" /><label for="testGrade">Test Grade</label><br><br>
+							<a href="javascript:SubmitGrade();" class="Flat">Submit</a>
+						</p>
+					</center>
+					<!--Scripts for EZ-Grader-->
+					<script>
+					//Function to see what is checked
+					function SubmitGrade() {
+						//Validation
+						var box1,box2,box3;
+						// box1 = document.getElementById('currentGrade').value;
+						box2 = document.getElementById('grade').value;
+						box3 = document.getElementById('outof').value;
+						/*if(box1 == "" || box1 == null) {
+							alert('Please input current grade in a percent without the percent sign');
+						}
+						else */ if (box2 == "" || box2 == null) {
+							alert('Please input how many points you received');
+						}
+						else if (box3 == "" || box3 == null) {
+							alert('Please input total points');
+						}
+						var testGrade = document.getElementById('testGrade').checked;
+						var homework = document.getElementById('homework').checked;
+						if(homework == true) {
+							gradeCheckHome();
+						}
+						else if(testGrade == true) {
+							gradeCheckTest();
+						}
+					}
+
+					//function that takes numeric grade and displays the letter grade value
+					function gradeCheckHome() {
+						var grade = document.getElementById('grade').value;
+						var outOf = document.getElementById('outof').value;
+						// 	var currentG = document.getElementById('currentGrade').value;
+						var percentG = (grade / outOf) * 100;
+						var extraCredit = percentG - 100;
+						var estimate = percentG * 0.27;
+
+						if(percentG > 100) {
+							alert('You recieved an A and extra credit!' + '<br><br>Percent: ' + '100%' + '<br>Extra Credit: ' + extraCredit + '%' + '<br>Total: ' + percentG + '%' + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 93 && percentG <= 100) {
+						alert('Congratulations you received an A!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >=90 && percentG <= 92.99) {
+							alert('You got an A-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 87 && percentG <= 89.99) {
+							alert('You got a B+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 83 && percentG <= 86.99) {
+							alert('You got a B!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 80 && percentG <= 82.99) {
+							alert('You got a B-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 77  && percentG <= 79.99) {
+							alert('You got a C+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 73 && percentG <= 76.99) {
+							alert('You got a C!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 70 && percentG <= 72.99) {
+							alert('You got a C-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 67 && percentG <= 69.99) {
+							alert('You got a D+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 63 && percentG <= 66.99) {
+							alert('You got a D!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG >= 60 && percentG <= 62.99) {
+							alert('You got a D-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG <= 59) {
+							alert('F, you failed!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%' + '<br><br>Suicide is never the answer!');
+							return false;
+						}
+					}
+					//function that takes numeric grade and displays the letter grade value
+					function gradeCheckTest() {
+						var grade = document.getElementById('grade').value;
+						var outOf = document.getElementById('outof').value;
+						var percentG = (grade / outOf) * 100;
+						var extraCredit = percentG - 100;
+						// 	var currentG = document.getElementById('currentGrade').value;
+						var estimate = percentG * 0.73;
+
+						if(percentG > 100) {
+						alert('You recieved an A and extra credit!' + '<br><br>Percent: ' + '100%' + '<br>Extra Credit: ' + extraCredit + '%' + '<br>Total: ' + percentG + '%' + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 93 && percentG <= 100) {
+						alert('Congratulations you received an A!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >=90 && percentG <= 92.99) {
+						alert('You got an A-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 87 && percentG <= 89.99) {
+						alert('You got a B+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 83 && percentG <= 86.99) {
+						alert('You got a B!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 80 && percentG <= 82.99) {
+						alert('You got a B-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 77  && percentG <= 79.99) {
+						alert('You got a C+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 73 && percentG <= 76.99) {
+						alert('You got a C!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 70 && percentG <= 72.99) {
+						alert('You got a C-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 67 && percentG <= 69.99) {
+						alert('You got a D+!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 63 && percentG <= 66.99) {
+						alert('You got a D!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+						return false;
+						}
+						else if(percentG >= 60 && percentG <= 62.99) {
+							alert('You got a D-!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+						else if(percentG <= 59) {
+							alert('F, you failed!' + '<br><br>Percent: ' + percentG + "%" + '<br>Estimated Impact: ' + estimate + '%');
+							return false;
+						}
+					}
+					</script>
+				</div>
+			</section>
+			<!--Footer-->
+			<footer>
+				<div class="social-w3lsicon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+				</div>
+			</footer>
+		</div><!--Wrapper End-->
+	</body>
+</html>

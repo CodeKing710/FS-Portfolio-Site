@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Quadratic Equation Solver</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
+		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1c07c1" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--Scripts-->
+		<script src="../js/jCode-2.5.js"></script>
+		<script>
+			$.include('js','../js/main.js','../js/logo.js');
+		</script>
+	</head>
+	<body>
+		<!--Nav interactants-->
+		<div id="navBTN">
+			<div id="bar1"></div>
+			<div id="bar2"></div>
+			<div id="bar3"></div>
+		</div>
+		<div id="wrapper">
+			<!--Nav-->
+			<nav id="mobiNav">
+				<div class="topNav">
+					<a href="javascript:void(0);" id="closeNav">X</a>
+					<a href="../index.html">Home</a>
+					<a href="../idea.html">Ideas</a>
+					<a href="../knowledge.html">Knowledge</a>
+					<a href="../faq.html">FAQ</a>
+					<a href="../about.html">About Us</a>
+					<a href="../register.html">Sign Up</a>
+					<a href="../login.html">Login</a>
+				</div>
+				<div class="bottomNav">
+				</div>
+			</nav>
+			<!--Non-mobile Nav-->
+			<nav id="largeNav">
+				<a href="../index.html">Home</a>
+				<a href="../idea.html">Ideas</a>
+				<a href="../knowledge.html">Knowledge</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../about.html">About Us</a>
+				<a href="../register.html">Sign Up</a>
+				<a href="../login.html">Login</a>
+			</nav>
+			<!--Header-->
+			<header>
+				<h1>Knowledge</h1>
+				<canvas id="logo">
+					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+				</canvas>
+				<center>
+					<canvas id="mobilogo">
+						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+					</canvas>
+				</center>
+			</header>
+			<!--Content-->
+			<section id="content">
+				<div>
+					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
+				</div>
+				<div>
+					<center>
+						<h3>Quadratic Equation Solver</h3>
+						<div style="border: 2px solid #800;border-radius: 25px; width: 30%; color: black;">
+							<h5 id="QuadType">From standard form</h5>
+							<h5>Quadratic Calculator Standard Form: <input type="radio" name="QuadType" id="QuadStandard" onclick="SelectQS()" checked /></h5>
+							<h5>Quadratic Calculator Graphing Form: <input type="radio" name="QuadType" id="QuadGraph" onclick="SelectQG()" /></h5>
+							<h5>Quadratic Calculator Factored Form: <input type="radio" name="QuadType" id="QuadFactored" onclick="SelectQF()" /></h5>
+						</div>
+						<script>
+						//Select QC standard
+						function SelectQS() {
+							document.getElementById('QS').style.display = "block";
+							document.getElementById('QG').style.display = "none";
+							document.getElementById('QF').style.display = "none";
+						}
+						function SelectQG() {
+							document.getElementById('QS').style.display = "none";
+							document.getElementById('QG').style.display = "block";
+							document.getElementById('QF').style.display = "none";
+						}
+						function SelectQF() {
+							document.getElementById('QS').style.display = "none";
+							document.getElementById('QG').style.display = "none";
+							document.getElementById('QF').style.display = "block";
+						}
+						</script>
+						<!--Standard Form-->
+						<p class="inbord" id="QS">
+						Y = <input type="text" size="1" id="A" placeholder="A" />X<sup>2</sup>&nbsp;+&nbsp;
+						<input type="text" size="1" id="B" placeholder="B" />X&nbsp;+&nbsp;
+						<input type="text" size="1" id="C" placeholder="C" /><br />
+						<a href="javascript:void(0);" onclick="QSQuad()" class="Flat">Solve</a><br /><br />
+						X-intercepts: (<span id="X1">X</span>,0)&nbsp;(<span id="X2">X</span>,0)<br />
+						Y-intercept: (0,<span id="Y">Y</span>)<br />
+						Vertex: (<span id="VX">X</span>,<span id="VY">Y</span>)
+						</p>
+						<script>
+						//Quadratic Formula Standard Form
+						function QSQuad() {
+							var d = document;
+							var an = Number(d.getElementById('A').value);
+							var bn = Number(d.getElementById('B').value);
+							var cn = Number(d.getElementById('C').value);
+							var y = d.getElementById('Y');
+							var x1 = d.getElementById('X1');
+							var x2 = d.getElementById('X2');
+							//(-B +- sqrt(B2 - 4ac))/2
+							var QuadP = (-(bn) +(Math.sqrt((bn * bn) + (-(4) * an * cn)))) / (2 * an);
+							var QuadM = (-(bn) -(Math.sqrt((bn * bn) + (-(4) * an * cn)))) / (2 * an);
+							//vertex equation
+							var VX = (-(bn)) / (2 * an);
+							var VY = (an*(Math.pow(VX,2))) + (bn * VX) + (cn);
+
+							y.innerHTML = cn;
+							x1.innerHTML = QuadP;
+							x2.innerHTML = QuadM;
+							d.getElementById('VX').innerHTML = VX;
+							d.getElementById('VY').innerHTML = VY;
+						}
+						</script>
+						<!--Graphing Form-->
+						<p class="inbord" id="QG" style="display: none;">
+						Y = <input type="text" size="1" id="QGA" placeholder="A" value="1" />(<b>X</b> +<input type="text" size="1" id="H" placeholder="H" />)<sup>2</sup>
+						+ <input type="text" size="1" id="K" placeholder="K" /><br />
+						<a href="javascript:void(0);" onclick="QGQuad" class="Flat">Solve</a><br /><br />
+						X-intercepts: (<span id="QGX1">X</span>,0)&nbsp;(<span id="QGX2">X</span>,0)<br />
+						Y-intercept: (0,<span id="QGY">Y</span>)<br />
+						Vertex: (<span id="QGVX">X</span>,<span id="QGVY">Y</span>)
+						</p>
+						<script>
+						//Quadratic FOrmula Graphing Form
+						function QGQuad() {
+							var d = document;
+							var a = Number(d.getElementById('QGA').value);
+							var h = Number(d.getElementById('H').value);
+							var k = Number(d.getElementById('K').value);
+							var VX = d.getElementById('QGVX');
+							var VY = d.getElementById('QGVY');
+							var X1 = d.getElementById('QGX1');
+							var X2 = d.getElementById('QGX2');
+							var Y = d.getElementById('QGY');
+							var QGXI1,QGXI2,QGYI;
+							if(a == "" || a == null) {
+								if(a == "0") {
+									an = 0;
+								}
+								else {
+									alert('Please input values for a');
+								};
+							}
+							else if(h == "" || h == null) {
+								if(h == "0") {
+									hn = 0;
+								}
+								else {
+									alert('Please input values for h');
+								};
+							}
+							else if(k == "" || k == null) {
+								if(k == "0") {
+									kn = 0;
+								}
+								else {
+									alert('Please input values for k');
+								};
+							}
+							else {
+								if(a != "1" || a != "0") {
+									QGXI1 = Math.sqrt(an((hn*hn)+(-kn)));
+									QGXI2 = -(Math.sqrt(an((hn*hn)+(-kn))));
+									QGYI = an(-(hn*hn)-kn);
+									VX.innerHTML = an(-(hn));
+									VY.innerHTML = kn;
+									X1.innerHTML = QGXI1;
+									X2.innerHTML = QGXI2;
+									Y.innerHTML = QGYI;
+								}
+								else {
+									QGXI1 = Math.sqrt((hn*hn)+(-kn));
+									QGXI2 = -(Math.sqrt((hn*hn)+(-kn)));
+									QGYI = -(hn*hn)-kn;
+									VX.innerHTML = -(hn);
+									VY.innerHTML = kn;
+									X1.innerHTML = QGXI1;
+									X2.innerHTML = QGXI2;
+									Y.innerHTML = QGYI;
+									};
+							}
+						}
+						</script>
+						<!--Factored Form-->
+						<p class="inbord" id="QF" style="display: none;">
+							Y = <input type="text" size="1" id="QFA" placeholder="A" value="1" />(<input type="text" size="1" id="QFXN1" placeholder="#" /><b>X</b> + <input type="text" size="1" id="QFN1" placeholder="#" />)(<input type="text" size="1" id="QFXN2" placeholder="#" /><b>X</b> + <input type="text" size="1" id="QFN2" placeholder="#" />)<br />
+							<a href="javascript:void(0);" onclick="QFQuad()" class="Flat">Solve</a><br /><br />
+							X-intercepts: (<span id="QFXI1">X</span>,0)&nbsp;(<span id="QFXI2">X</span>,0)<br />
+							Y-intercept: (0,<span id="QFYI">Y</span>)<br />
+							Vertex: (<span id="QFVX">X</span>,<span id="QFVY">Y</span>)
+						</p>
+						<script>
+						//Quadratic Formula Factored Form
+						function QFQuad() {
+							var d = document;
+							var an = Number(d.getElementById('QFA').value);
+							var XN1 = Number(d.getElementById('QFXN1').value);
+							var XN2 = Number(d.getElementById('QFXN2').value);
+							var N1 = Number(d.getElementById('QFN1').value);
+							var N2 = Number(d.getElementById('QFN2').value);
+							var XI1 = d.getElementById('QFXI1');
+							var XI2 = d.getElementById('QFXI2');
+							var Y = d.getElementById('QFYI');
+							var VX = d.getElementById('QFVX');
+							var VY = d.getElementById('QFVY');
+							var QFX1, QFX2, QFY;
+							if(XN1 == "" || XN1 == null) {
+								if(XN1 = "0") {
+									XN1 = 0;
+								}
+								else {
+									alert('Please input values for the first X value');
+								};
+							}
+							else if(N1 == "" || N1 == null) {
+								if(N1 == "0") {
+									N1 = 0;
+								}
+								else {
+									alert('Please input values for the first # value');
+								};
+							}
+							else if(XN2 == "" || XN2 == null) {
+								if(XN2 == "0") {
+									XN2 = 0;
+								}
+								else {
+									alert('Please input values for the second X value');
+								};
+							}
+							else if(N2 == "" || N2 == null) {
+								if(N2 == "0") {
+									N2 = 0;
+								}
+								else {
+									alert('Please input values for the second # value');
+								};
+							}
+							else {
+								if(an != 1) {
+									QFX1 = (an((XN1 + (-(N1)))));
+									QFX2 = (an((XN2 + (-(N2)))));
+									QFY = (an(N1*N2));
+								}
+								else if(an == 0) {
+									alert('A cannot equal 0, there is no answer');
+								}
+								else {
+									QFX1 = (XN1 + (-(N1)));
+									QFX2 = (XN2 + (-(N2)));
+									QFY = (N1*N2);
+								};
+								XI1.innerHTML = QFX1;
+								XI2.innerHTML = QFX2;
+								Y.innerHTML = QFY;
+							}
+						}
+						</script>
+					</center>
+				</div>
+			</section>
+			<!--Footer-->
+			<footer>
+				<div class="social-w3lsicon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+				</div>
+			</footer>
+		</div><!--Wrapper End-->
+	</body>
+</html>

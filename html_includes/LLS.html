@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Linear Line Solver</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
+		<meta charset="utf-8" />
+		<meta name="theme-color" content="#1c07c1" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--Scripts-->
+		<script src="../js/jCode-2.5.js"></script>
+		<script>
+			$.include('js','../js/main.js','../js/logo.js');
+		</script>
+	</head>
+	<body>
+		<!--Nav interactants-->
+		<div id="navBTN">
+			<div id="bar1"></div>
+			<div id="bar2"></div>
+			<div id="bar3"></div>
+		</div>
+		<div id="wrapper">
+			<!--Nav-->
+			<nav id="mobiNav">
+				<div class="topNav">
+					<a href="javascript:void(0);" id="closeNav">X</a>
+					<a href="../index.html">Home</a>
+					<a href="../idea.html">Ideas</a>
+					<a href="../knowledge.html">Knowledge</a>
+					<a href="../faq.html">FAQ</a>
+					<a href="../about.html">About Us</a>
+					<a href="../register.html">Sign Up</a>
+					<a href="../login.html">Login</a>
+				</div>
+				<div class="bottomNav">
+				</div>
+			</nav>
+			<!--Non-mobile Nav-->
+			<nav id="largeNav">
+				<a href="../index.html">Home</a>
+				<a href="../idea.html">Ideas</a>
+				<a href="../knowledge.html">Knowledge</a>
+				<a href="../faq.html">FAQ</a>
+				<a href="../about.html">About Us</a>
+				<a href="../register.html">Sign Up</a>
+				<a href="../login.html">Login</a>
+			</nav>
+			<!--Header-->
+			<header>
+				<h1>Knowledge</h1>
+				<canvas id="logo">
+					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+				</canvas>
+				<center>
+					<canvas id="mobilogo">
+						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
+					</canvas>
+				</center>
+			</header>
+			<!--Content-->
+			<section id="content">
+				<div>
+					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
+				</div>
+				<div>
+					<center>
+						<h3>Linear Equation from 2 points</h3><h5>Broken</h5>
+						<p class="inbord">
+							(<input type="text" size="2" id="LX1" />,<input type="text" size="2" id="LY1" />)&nbsp;,&nbsp;(<input type="text" size="2" id="LX2" />,<input type="text" size="2" id="LY2" />)<br><a href="javascript:SolveLine();" class="Flat">Solve</a><br><br>
+							<span id="LineEQ">y = mx + b</span>
+						</p>
+					</center>
+					<!--Scripts for Linear EQ Solver-->
+					<script>
+					function SolveLine() {
+						//constants
+						var d = document;
+						var LX1 = Number(d.getElementById('LX1').value);
+						var LX2 = Number(d.getElementById('LX2').value);
+						var LY1 = Number(d.getElementById('LY1').value);
+						var LY2 = Number(d.getElementById('LY2').value);
+						var slope,b;
+						//Line equation
+						var DY,DX;
+						DX = LX2 - LX1;
+						DY = LY2 - LY1;
+						slope = DY / DX;
+						if(LX1 == "0") {
+							b = LY1;
+						}
+						else if(LX2 == "0") {
+							b = LY2;
+						}
+						else {
+							b = (-(LY1)) + (slope*LX1);
+							d.getElementById('LineEQ').innerHTML = "y = " + slope + "x + " + b;
+						}
+					}
+					</script>
+				</div>
+			</section>
+			<!--Footer-->
+			<footer>
+				<div class="social-w3lsicon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+				</div>
+			</footer>
+		</div><!--Wrapper End-->
+	</body>
+</html>
