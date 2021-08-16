@@ -3,17 +3,17 @@
 	Build subject to change.
 	Uncompressed and will have tons of debug stuff in this for debug purposes.
 	Remember to only comment out unneeded code as it may be useful later.
-	Syntax attempting to achieve:
+	Syntax attempting to achieve: 
 	- $(selector,num).func();
 	- $(selector,num).func().func();
 	- $(selector,return);
 	- $(selector,arrNum).func();
 	- $(selector,arrNum).func().func();
-
+	
 	When parameters left blank for functions that set values to elements, it returns them in arrays. Syntax is as follows:
 	- $(selector,{num || arrNum}).func(noParams)[num];
 	Chaining is only achievable if the function allows it. This can go for functions that either only set values or don't return values. Chainable functions will be labeled in the comments (Shows up in supported text editors such as Brackets.io)
-
+	
 	Default num is 0 for all. Chainable objects will return the object, DON'T TRY TO ASSIGN IT TO A VARIABLE! It only makes a copy, and won't return true or false or anything besides the entire library for chain purposes.
 	Intention: Minimalistic library modeled after jQuery to handle the basic stuff and provide some advanced features that make the beginner able to handle programming in JavaScript.
 	Goal: Try and make this as fast, efficient, and robust as possible. Make the library very hard to break.
@@ -29,9 +29,9 @@
 		console.log('jCode encountered a page error, returning false');
 		return false;
 	}
-
+	
 	var document = window.document;
-
+	
 	//Code suit will follow functional programming standards
 	var jCode = function(selector, context){
 		//Preprocessing of selector and contexts to see if they exist and what we can do to them before insertion
@@ -76,11 +76,14 @@
 					func.call(this, context[i]);
 				}
 			}
-
+			
 			return this;
 		},
 		stringify: function(value){
 			return jCode.stringify(value);
+		},
+		parseHTML: function(html) {
+			return jCode.parseHTML(html);
 		}
 	}
 	//Build extension function
@@ -160,7 +163,7 @@
 			return query;
 		}
 	}
-
+	
 	//Build INIT function
 	var init = jCode.mod.init = function(selector, context) {
 		//Check what the selector is
@@ -307,14 +310,14 @@
 	}
 	//Allow for backtracking of root functions
 	init.prototype = jCode.mod;
-
+	
 	//Build library function
 	//NOTE: When seeing if the parameter is null, use "==" and not "===" because it is not completely null type, just null as in empty
 	/*
 		Format for functions:
 			var arr = [], elems = this[0];
 			this.loop(elems, function(elem){
-
+				
 			});
 			return !this.emptyArr(arr) ? arr : this;
 	*/
@@ -591,7 +594,7 @@
 			var arr = [], elems = this[0];
 			console.info("Function is getting redesigned to be better, won't be chainable after redesign.");
 			this.loop(elems, function(elem){
-
+				
 			});
 			return this;
 		},
@@ -726,7 +729,7 @@
 			return this;
 		}
 	});
-
+	
 	//Set up drawing plugin
 	jCode.beefUp({
 		context: function(type) {
@@ -846,7 +849,7 @@
 			that.loop(ctx, function(ctx){
 				ctx.moveTo(sx,sy);
 				conf(ctx, config);
-
+				
 			});
 			return this;
 		},
@@ -858,7 +861,7 @@
 			that.loop(ctx, function(ctx){
 				ctx.moveTo(sx,sy);
 				conf(ctx, config);
-
+				
 			});
 			return this;
 		}
@@ -871,7 +874,7 @@
 			var innerName, bpos1=0, bpos2, rep, dataKey, dataVal, i=0,j=0;
 			dataKey = jCode(data, "keys");
 			dataVal = jCode(data, "values");
-
+			
 			//Check to see if there are any variables in text
 			if(elem.innerHTML.indexOf("{{") <= -1) {
 				return this;
@@ -946,7 +949,7 @@
 								fileNum += 1;
 							};
 						})(f);
-
+						
 						r.readAsText(f);
 					}
 				} else {
@@ -1040,16 +1043,15 @@
 			}
 		}
 	},"ezREGEX",1);
-
+	
 	//Build functions that don't use selector(s)
-	//Math functions
 	jCode.math = {
-		random : function (floor, ceil) {
+		random : function(floor, ceil) {
 			var randomNumber = Math.floor((Math.random() * ceil) + floor);
 			return randomNumber && this;
 		},
 		//Missing sides must be deemed null when used
-		triSides : function (right, a, b, c, A, B, C) {
+		triSides : function(right, a, b, c, A, B, C) {
 			if (right) {
 				if (a === null) {
 					//Solve for a
@@ -1102,21 +1104,23 @@
 		}
 	};
 	//Check console to see userAgent details
-	jCode.detectOS = function () {
+	jCode.detectOS = function(getAgent) {
 		var agent = navigator.userAgent,
 			os = null,
 			cos = ["Android", "iOS", "iOS", "iOS", "Mac OS X", "Mac OS", "Linux", "Linux", "Windows 10", "Windows 10", "Windows 8.1", "Windows 8.1", "Windows 8", "Windows 8", "Windows 7", "Windows 7", "Windows Vista", "Windows Vista", "Windows XP", "Windows XP","BlackBerryOS","BlackBerryOS"],
 			rel = ["Android", "iPhone","iPad","iPod", "Mac OS X", "Macintosh", "Linux", "X11", "åWindows NT 10.0", "Windows 10", "Windows NT 6.3", "Windows 8.1", "Windows 8", "Windows 8", "Windows 7", "Windows 7", "Windows NT 6.0", "Windows Vista", "Windows NT 5.1", "Windows XP","BB10","PlayBook"],
 			id = 0;
-		console.log(agent);
-		for (id; id < cos.length; id++) {
-			if (agent.search(rel[id]) > -1) {
-				os = cos[id];
-				break;
+		if(getAgent) {
+			return agent;
+		} else {
+			for (id; id < cos.length; id++) {
+				if (agent.search(rel[id]) > -1) {
+					os = cos[id];
+					break;
+				}
 			}
+			return os;
 		}
-		console.log(os);
-		return os;
 	};
 	jCode.concat = function () {
 		var args = arguments, argArr = [], concat = "";
@@ -1139,7 +1143,7 @@
 			}
 			return xobj;
 		},
-		get : function(file, asynch, callback){
+		get : function(file, callback){
 			//Handle LT IE 6
 			var xobj;
 			if (window.XMLHttpRequest) {
@@ -1164,10 +1168,10 @@
 					return;
 				}
 			};
-			xobj.open("GET", file, asynch);
+			xobj.open("GET", file, true);
 			xobj.send();
 		},
-		post : function(file, asynch, filter, callback){
+		post : function(file, filter, callback){
 			//Handle LT IE 6
 			var xobj;
 			if (window.XMLHttpRequest) {
@@ -1192,7 +1196,7 @@
 					return;
 				}
 			};
-			xobj.open("POST", file, asynch);
+			xobj.open("POST", file, true);
 			xobj.send(filter);
 		}
 	};
@@ -1301,7 +1305,7 @@
 			return objArr;
 		},
 		/*
-			Used to get both keys and values of an object.
+			Used to get both keys and values of an object. 
 			Returns an array containing the keys and values, looks like this:
 			arr[0] = keys[num];
 			arr[1] = values[num];
@@ -1318,7 +1322,7 @@
 	};
 	jCode.include = function(type) {
 		//use arguments passed through to include scripts
-		var args = arguments || {}, include = [];
+		var args = arguments || {};
 		if(type === null) {
 			console.log('Please define a type as defaulting will cause bugs');
 			return false;
@@ -1328,17 +1332,13 @@
 				console.log("No names input, returning false");
 				return false;
 			} else {
-				for(var i = 1; i < args.length; i++) {
-					//Start building array of scripts to include in page
-					include.push(args[i]);
-				}
 				//Run through include array and apply them to a script tag
 				(function appendScript() {
 					if(document.body) {
-						for(var i = 0; i < include.length; i++) {
+						for(var i = 1; i < args.length; i++) {
 							var script = document.createElement('script');
-							console.log("Successfully Imported \"" + include[i] + "\"!");
-							script.setAttribute('src',include[i]);
+							console.log("Successfully Imported \"" + args[i] + "\"!");
+							script.setAttribute('src',args[i]);
 							document.body.appendChild(script);
 						}
 					} else {
@@ -1351,24 +1351,14 @@
 				console.log("No names input, returning false");
 				return false;
 			} else {
-				var media;
-				if(typeof args[1] !== "number") {
-					media = 'screen';
-					for(var i = 1; i < args.length; i++) {
-						include.push(args[i]);
-					}
-				} else {
-					media = args[1];
-					for(var i = 2; i < args.length; i++) {
-						include.push(args[i]);
-					}
-				}
-
-				for(var i = 0; i < include.length; i++) {
+				//Second argument should always define the media
+				var media = args[1];
+				
+				for(var i = 1; i < args.length; i++) {
 					var link = document.createElement('link');
 					link.setAttribute('media',media);
-					link.setAttribute('rel','stylesheet');
-					link.setAttribute('href',include[i]);
+					link.setAttribute('rel','stylesheet'); //This can be assumed since we are working with CSS
+					link.setAttribute('href',args[i]);
 					document.getElementsByTagName('head')[0].appendChild(link);
 				}
 			}
@@ -1379,39 +1369,22 @@
 				return false;
 			} else {
 				for(var i = 1; i < args.length; i++) {
-					include.push(args[i]);
-				}
-				for(var i = 0; i < include.length; i++) {
-					var link = document.createElement('link');
-					function supportsImports(){
-						return 'import' in link;
+					//Use AJAX calling (Final supported file importer for local use)
+					var doc;
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("GET", args[i], true);
+					xhttp.send();
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						doc = this.responseText;
 					}
-					//Check if imports are supported here
-					if(supportsImports()) {
-						link.setAttribute('rel','import');
-						link.setAttribute('href',include[i]);
-						document.getElementsByTagName('head')[0].appendChild(link);
-						return document.querySelector('link[rel="import"]').import;
-					} else {
-						//Use AJAX calling
-						var doc;
-						var xhttp = new XMLHttpRequest();
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-								doc = this.responseText;
-							}
-						}
-						xhttp.open("GET", include[i], true);
-						xhttp.send();
-						return;
-					}
+					return doc;
 				}
 			}
 		} else {
 			console.log('Type doesn\'t exist: ' + type);
 			return false;
 		}
-
+		
 	};
 	jCode.enum = function(name,enumObj) {
 		//name will be the place where the stuff is stored, can be left out, but must assign this to a variable to save the enum
@@ -1444,7 +1417,7 @@
 			} else if(jCode.mod.isArray(value)) {
 				//Check for second arg to find set
 				if(jCode.mod.isNum(arguments[1])) {
-
+					
 				} else {
 					value = value.join();
 					value = value.replace(",","|");
@@ -1458,10 +1431,20 @@
 			//Backup in case the array one jumps out
 			return value;
 		};
-
+	jCode.parseHTML = function(html) {
+		//For this to work, we will just make the browser do it for us
+		//Applications for this: possibly none as any text can be parsed as html by doing what this function does
+		//Make element (never assign to document)
+		var fake = document.createElement("span");
+		//Assign the html text to the element via innerHTML (supported across all browsers)
+		fake.innerHTML = html;
+		//Return the innerHTML of the fake element
+		return fake.innerHTML;
+	};
+	
 	//Set jCode to shortcut
 	window.$ = jCode;
-
+	
 	//Set up noConflict function to make jCode relieve the $ variable.
 	var _$ = window.$, _jCode = window.jCode;
 	jCode.noConflict = function(){

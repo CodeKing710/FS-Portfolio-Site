@@ -13,6 +13,7 @@ html, body {
 	background: #555;
     color: #eee;
 }
-div {margin: 0.5em 5em;padding: 5px;}
+#content {margin: 0.5em 5em;padding: 5px;}
+#content div {margin: auto;}
 a, a:visited {display: inline-block; text-decoration: none; color: #b80; font-weight: 100; transition: all 0.5s ease;}
-a:hover {font-weight: 900; font-size:1.2em;}
+a:hover {font-weight: 900; color: #fff;}

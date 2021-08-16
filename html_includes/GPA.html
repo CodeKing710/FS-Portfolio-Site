@@ -4,173 +4,129 @@
 	<title>GPA Calculator</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,height=device-height" />
 		<meta charset="utf-8" />
-		<meta name="theme-color" content="#1c07c1" />
+		<!-- <meta name="theme-color" content="#1c07c1" /> -->
 		<link rel="stylesheet" href="../css/font-awesome.css" />
 		<link rel="stylesheet" href="../css/main.css" />
 		<!--Scripts-->
 		<script src="../js/jCode-2.5.js"></script>
 		<script>
-			$.include('js','../js/main.js','../js/logo.js');
+			$.include('js','../js/main.js');
 		</script>
 	</head>
 	<body>
-		<!--Nav interactants-->
-		<div id="navBTN">
-			<div id="bar1"></div>
-			<div id="bar2"></div>
-			<div id="bar3"></div>
-		</div>
-		<div id="wrapper">
-			<!--Nav-->
-			<nav id="mobiNav">
-				<div class="topNav">
-					<a href="javascript:void(0);" id="closeNav">X</a>
-					<a href="../index.html">Home</a>
-					<a href="../idea.html">Ideas</a>
-					<a href="../knowledge.html">Knowledge</a>
-					<a href="../faq.html">FAQ</a>
-					<a href="../about.html">About Us</a>
-					<a href="../register.html">Sign Up</a>
-					<a href="../login.html">Login</a>
-				</div>
-				<div class="bottomNav">
-				</div>
-			</nav>
-			<!--Non-mobile Nav-->
-			<nav id="largeNav">
-				<a href="../index.html">Home</a>
-				<a href="../idea.html">Ideas</a>
-				<a href="../knowledge.html">Knowledge</a>
-				<a href="../faq.html">FAQ</a>
-				<a href="../about.html">About Us</a>
-				<a href="../register.html">Sign Up</a>
-				<a href="../login.html">Login</a>
-			</nav>
-			<!--Header-->
-			<header>
-				<h1>Knowledge</h1>
-				<canvas id="logo">
-					Your browser don't support canvas, we will automagically put in a pre-generated image instead!
-				</canvas>
-				<center>
-					<canvas id="mobilogo">
-						Your browser don't support canvas, we will automagically put in a pre-generated image instead!
-					</canvas>
-				</center>
-			</header>
-			<!--Content-->
-			<section id="content">
-				<div>
-					<a href="../index.html" class="trans-btn">Home</a> > <a href="../knowledge.html" class="trans-btn">Back</a>
-				</div>
-				<div>
-					<!--Calculator-->
+		<!--Content-->
+		<div id="content">
+			<div>
+				<a href="../index.html">Home</a> > <a href="../projects.html">Projects</a>
+			</div>
+			<div>
+				<!--Calculator-->
 				<center>
 					<h1>GPA Calculator</h1>
 					<select id="HR1">
-					  <option value="null">Hr 1</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 1</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select>
 					<select id="HR2">
-					  <option value="null">Hr 2</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 2</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select>
 					<select id="HR3">
-					  <option value="null">Hr 3</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 3</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select>
 					<select id="HR4">
-					  <option value="null">Hr 4</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 4</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select>
 					<select id="HR5">
-					  <option value="null">Hr 5</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 5</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select> (
 					<select id="HR6">
-					  <option value="null">Hr 6</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 6</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select>
 					<select id="HR7">
-					  <option value="null">Hr 7</option>
-					  <option value="4">A</option>
-					  <option value="3.7">A-</option>
-					  <option value="3.3">B+</option>
-					  <option value="3">B</option>
-					  <option value="2.7">B-</option>
-					  <option value="2.3">C+</option>
-					  <option value="2">C</option>
-					  <option value="1.7">C-</option>
-					  <option value="1.3">D+</option>
-					  <option value="1">D</option>
-					  <option value="0.7">D-</option>
-					  <option value="0">F</option>
+						<option value="null">Hr 7</option>
+						<option value="4">A</option>
+						<option value="3.7">A-</option>
+						<option value="3.3">B+</option>
+						<option value="3">B</option>
+						<option value="2.7">B-</option>
+						<option value="2.3">C+</option>
+						<option value="2">C</option>
+						<option value="1.7">C-</option>
+						<option value="1.3">D+</option>
+						<option value="1">D</option>
+						<option value="0.7">D-</option>
+						<option value="0">F</option>
 					</select> )<br><br>
 					<a href="javascript:calcGPA();" class="Flat"> Calculate</a>
 					<p id="gpa"></p>
@@ -178,7 +134,7 @@
 				<!--Scripts-->
 				<script>
 					//letter grades
-					  function calcGPA(){
+					function calcGPA(){
 						var d = document;
 						var HR1 = Number(d.getElementById("HR1").value);
 						var HR2 = Number(d.getElementById("HR2").value);
@@ -193,141 +149,132 @@
 
 						//finda the average of different sets of inputs
 						if(HR1 == null || HR2 == null || HR3 == null || HR4 == null || HR5 == null){
-						  gpa.innerHTML = "*You must fill out your first 5 classes";
+							gpa.innerHTML = "*You must fill out your first 5 classes";
 						}
 						else if(HR6 == null && HR7 == null){
-						  HR1 = Number(HR1);
-						  HR2 = Number(HR2);
-						  HR3 = Number(HR3);
-						  HR4 = Number(HR4);
-						  HR5 = Number(HR5);
-						  average = (HR1 + HR2 + HR3 + HR4 + HR5) / 5;
+							HR1 = Number(HR1);
+							HR2 = Number(HR2);
+							HR3 = Number(HR3);
+							HR4 = Number(HR4);
+							HR5 = Number(HR5);
+							average = (HR1 + HR2 + HR3 + HR4 + HR5) / 5;
 						}
 						else if(HR7 == null){
-						  HR1 = Number(HR1);
-						  HR2 = Number(HR2);
-						  HR3 = Number(HR3);
-						  HR4 = Number(HR4);
-						  HR5 = Number(HR5);
-						  HR6 = Number(HR6);
-						  average = (HR1 + HR2 + HR3 + HR4 + HR5 + HR6) / 6;
+							HR1 = Number(HR1);
+							HR2 = Number(HR2);
+							HR3 = Number(HR3);
+							HR4 = Number(HR4);
+							HR5 = Number(HR5);
+							HR6 = Number(HR6);
+							average = (HR1 + HR2 + HR3 + HR4 + HR5 + HR6) / 6;
 						}
 						else{
-						  HR1 = Number(HR1);
-						  HR2 = Number(HR2);
-						  HR3 = Number(HR3);
-						  HR4 = Number(HR4);
-						  HR5 = Number(HR5);
-						  HR6 = Number(HR6);
-						  HR7 = Number(HR7);
-						  average = (HR1 + HR2 + HR3 + HR4 + HR5 + HR6 + HR7) / 7;
+							HR1 = Number(HR1);
+							HR2 = Number(HR2);
+							HR3 = Number(HR3);
+							HR4 = Number(HR4);
+							HR5 = Number(HR5);
+							HR6 = Number(HR6);
+							HR7 = Number(HR7);
+							average = (HR1 + HR2 + HR3 + HR4 + HR5 + HR6 + HR7) / 7;
 						};
 						//rounds number (to make look nicer)
 
 						//rounds number to x.x if its a whole number (4,3,2,1,0)
 						if(String(average).length == 1){
-						  gpa.innerHTML = average + ".0";
+							gpa.innerHTML = average + ".0";
 						}
 						//long decimals get rounded to x.xx
 						else if(String(average).length > 3){
-						 GPA = average.toFixed(2);
-						 gpa.innerHTML = GPA;
+							GPA = average.toFixed(2);
+							gpa.innerHTML = GPA;
 						}
 						else{
-						 gpa.innerHTML = average;
+							gpa.innerHTML = average;
 						};
 
 						//brightest green
 						if(average == 4){
-						 d.getElementById('gpa').style.color = "#00FF00";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#00FF00";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//green
 						else if(average >= 3.9){
-						 d.getElementById('gpa').style.color = "#5FFB17";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#5FFB17";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.8){
-						 d.getElementById('gpa').style.color = "#59E817";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#59E817";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//darkish green
 						else if(average >= 3.7){
-						 d.getElementById('gpa').style.color = "#7FE8177";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#7FE8177";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.6){
-						 d.getElementById('gpa').style.color = "#87F717";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#87F717";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.5){
-						 d.getElementById('gpa').style.color = "#8AFB17";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#8AFB17";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.4){
-						 d.getElementById('gpa').style.color = "#B1FB17";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#B1FB17";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//green-yellow
 						else if(average >= 3.3){
-						 d.getElementById('gpa').style.color = "#52D017";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#52D017";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.2){
-						 d.getElementById('gpa').style.color = "#6CC417";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#6CC417";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3.1){
-						 d.getElementById('gpa').style.color = "#4CC417";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#4CC417";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 3){
-						 d.getElementById('gpa').style.color = "#6CBB3C";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#6CBB3C";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//yellow-orange
 						else if(average >= 2.8){
-						 d.getElementById('gpa').style.color = "#BCE954";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#BCE954";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 2.6){
-						 d.getElementById('gpa').style.color = "#EDE275";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#EDE275";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 2.4){
-						 d.getElementById('gpa').style.color = "#FFE87C";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#FFE87C";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 2.2){
-						 d.getElementById('gpa').style.color = "#FFDB58";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#FFDB58";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						else if(average >= 2){
-						 d.getElementById('gpa').style.color = "#FFD801";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#FFD801";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//light red
 						else if(average >= 1.5){
-						 d.getElementById('gpa').style.color = "#EE9A4D";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#EE9A4D";
+							d.getElementById('gpa').style.fontSize = "50px";
 						}
 						//red
 						else{
-						 d.getElementById('gpa').style.color = "#FF0000";
-						 d.getElementById('gpa').style.fontSize = "50px";
+							d.getElementById('gpa').style.color = "#FF0000";
+							d.getElementById('gpa').style.fontSize = "50px";
 						};
-					   }
-					</script>
-				</div>
-			</section>
-			<!--Footer-->
-			<footer>
-				<div class="social-w3lsicon">
-					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
-					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
-					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
-				</div>
-			</footer>
-		</div><!--Wrapper End-->
+					}
+				</script>
+			</div>
+		</div>
 	</body>
 </html>

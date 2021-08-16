@@ -1,0 +1,14 @@
+/* jcode-ui.css - Provides classes and defaults for a jCode template website */
+html{box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;overflow-x:hidden;font-size:16px;}
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+#wrapper {position: relative;min-height: 100%;}
+* {transition: all 0.3s cubic-bezier(0.69, 0.01, 0.81, 0.71);}
+#wrapper > section {padding-bottom: 100px;}
+.normNav {
+	
+}
