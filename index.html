@@ -18,41 +18,44 @@
 		</script>
     </head>
     <body>
-        <div id="content">
-            <h1>Carter Ervin</h1>
-            <h2>Software Developer</h2>
-            <hr />
-            <p>I started teaching myself to program when I was 12 and kept learning ever since. Now that I am old enough to be in the job field I decided to try and get my credentials ASAP so I can start applying.</p>
-            <h3><a href="./projects.html">My Projects</a></h3>
-            <p>Here is a small preview of some of the projects I have done. None of these previews are super impressive and are just little functions and tools made to just process data.</p>
-            <div>
-                <h4>String Reversal</h4>
-                <label for="revin">Input String: </label><input type="text" name="revin" id="strrev" />
-                <a href="javascript:void(0);" onclick="revStr()">Reverse!</a>
-                <p id="revStrOut"></p>
-                <script>
-                    function revStr() {
-                        var str = document.getElementById("strrev").value;
-                        //Process array in reverse
-                        var rev = [];
-                        for(var i = str.length-1; i >= 0; i--)
-                            rev.push(str[i]);
+        <div id="wrapper">
+            <section>
+                <h1>Carter Ervin</h1>
+                <h2>Software Developer</h2>
+                <hr />
+                <p>I started teaching myself to program when I was 12 and kept learning ever since. Now that I am old enough to be in the job field I decided to try and get my credentials ASAP so I can start applying.</p>
+                <h3><a href="./projects.html">My Projects</a></h3>
+                <p>Here is a small preview of some of the projects I have done. None of these previews are super impressive and are just little functions and tools made to just process data.</p>
+                <div>
+                    <h4>String Reversal</h4>
+                    <label for="revin">Input String: </label><input type="text" name="revin" id="strrev" />
+                    <a href="javascript:void(0);" onclick="revStr()">Reverse!</a>
+                    <p id="revStrOut"></p>
+                    <script>
+                        function revStr() {
+                            var str = document.getElementById("strrev").value;
+                            //Process array in reverse
+                            var rev = [];
+                            for(var i = str.length-1; i >= 0; i--)
+                                rev.push(str[i]);
 
-                        document.getElementById("revStrOut").innerHTML = rev.join("");
-                    }
+                            document.getElementById("revStrOut").innerHTML = rev.join("");
+                        }
+                    </script>
+                </div>
+                <hr />
+                <h3>About Me</h3>
+                <p>I am a 7 year self-taught programmer, proficient in many langauges but no prior record of work experience in the software field. In high school I wanted to make some extra side money so I built a website for a small business in town. The website doesn't have a back-end because they didn't think it was necessary to have a database with the amount of housing that they had available. The website is still live as of <span id="currentDate"></span> and resides at <a href="http://www.uworent.com" target="_blank">www.uworent.com</a> if you would like to check it out (Link also in projects). </p>
+                <script>
+                    document.getElementById('currentDate').innerText = String(new Date().getUTCMonth()+1)+'-'+new Date().getUTCDate()+'-'+new Date().getUTCFullYear();
                 </script>
-            </div>
-            <hr />
-            <h3>About Me</h3>
-            <p>I am a 7 year self-taught programmer, proficient in many langauges but no prior record of work experience in the software field. In high school I wanted to make some extra side money so I built a website for a small business in town. The website doesn't have a back-end because they didn't think it was necessary to have a database with the amount of housing that they had available. The website is still live as of <span id="currentDate"></span> and resides at <a href="http://www.uworent.com" target="_blank">www.uworent.com</a> if you would like to check it out (Link also in projects). </p>
-            <script>
-                document.getElementById('currentDate').innerText = String(new Date().getUTCMonth()+1)+'-'+new Date().getUTCDate()+'-'+new Date().getUTCFullYear();
-            </script>
-            <!-- <p>Dolore lyft put a bird on it excepteur try-hard knausgaard ut 8-bit readymade photo booth artisan crucifix consequat. Tempor pinterest farm-to-table, roof party ea VHS in magna flexitarian. Air plant crucifix vice godard kombucha eu semiotics ipsum. Pabst before they sold out leggings quis ut. VHS hella thundercats vexillologist aute, jean shorts poutine scenester pabst duis pug mollit vinyl. Williamsburg enamel pin pug, swag hoodie put a bird on it tattooed yuccie exercitation ad etsy direct trade chambray gluten-free. Next level aesthetic eu, consequat bespoke live-edge green juice cronut commodo post-ironic copper mug seitan lorem. Laboris unicorn flexitarian pok pok kogi ad. Next level banh mi forage keytar cardigan wolf. Thundercats XOXO fanny pack plaid, ennui fixie yuccie ugh brunch selfies lyft blue bottle. Bushwick vice edison bulb, austin fingerstache bespoke lomo quinoa master cleanse. IPhone VHS tilde you probably haven't heard of them affogato tousled gentrify la croix vinyl salvia roof party unicorn disrupt XOXO migas.Beard migas tote bag plaid pour-over kitsch etsy keytar williamsburg art party taiyaki post-ironic gastropub. You probably haven't heard of them food truck next level whatever tumeric semiotics chartreuse. Gastropub mustache bushwick kale chips meditation skateboard direct trade lumbersexual echo park flannel fashion axe. Pabst messenger bag chia snackwave fingerstache small batch pork belly af offal disrupt hexagon mustache squid cred prism. Heirloom next level slow-carb iceland mixtape, hammock gochujang flexitarian portland. You probably haven't heard of them cliche marfa, vinyl artisan adaptogen organic ennui shabby chic. Deep v slow-carb raclette subway tile coloring book man braid literally jianbing poutine migas. Before they sold out crucifix taiyaki chartreuse tousled viral fashion axe occupy humblebrag air plant mumblecore locavore kinfolk. Tumblr leggings four dollar toast pok pok echo park, authentic austin. Retro lo-fi adaptogen kickstarter trust fund. 3 wolf moon pitchfork bespoke tbh yuccie messenger bag single-origin coffee venmo keytar blue bottle meggings godard next level.</p> -->
-            <span>Props to <a href="https://hipsum.co/" target="_blank">Hipster Ipsum</a> for the ridiculous Lorem Ipsum text</span>
-            <h3>Contact Me</h3>
-            <p>cjrox31@gmail.com</p>
-            <p>1(800)285-5936</p>
+                <p>If you checked out the website above you may have noticed that the current color scheme is a common one for me, turns out it is for a lot of people.</p>
+            </section>
+            <footer>
+                <h3>Contact Me</h3>
+                <p>cjrox31@gmail.com</p>
+                <p>1(800)285-5936</p>
+            </footer>
         </div>
     </body>
 </html>

@@ -8,20 +8,49 @@
         <script src="./js/jCode-2.5.js"></script>
 		<script>
 			$.include('js','./js/main.js');
-            var includes = $.include('other','./html_includes/GPA.html');
-            jCode()
+            //Globals
+            var include_list = [
+                './html_includes/areaP.html',
+                './html_includes/BBPQ.html',
+                './html_includes/ELS.html',
+                './html_includes/EZG.html',
+                './html_includes/finalCalc.html',
+                './html_includes/GPA.html',
+                './html_includes/LLS.html',
+                './html_includes/Quad.html',
+            ];
+            //Wait for pageload and begin building project frames
+            for(i=0;i<include_list.length;i++)
+                $("#projectWrapper nav").prepend("<a href=\""+include_list[i]+"\" target=\"projFrame\"></a>");
 		</script>
     </head>
     <body>
-        <div id="content">
+        <div id="wrapper">
             <div>
 				<a href="./index.html">Home</a>
 			</div>
-            <div>
+            <div id="projectWrapper">
                 <!--Use JS to grab every html_include and wrap them-->
-                <script>
-                    
-                </script>
+                <!--General Wrapper Style-->
+                <!--
+                    <div class="projContainer">
+                        <label for="projframe#"><PROJ_NAME></label>
+                        <iframe src="<PATH_TO_PROJ>" class="projEmbed" title="<PROJ_NAME>"></iframe>
+                    </div>
+                -->
+
+                <!--Alternative to having multiple iframes open at once-->
+                <!--
+                    <nav>
+                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
+                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
+                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
+                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
+                    </nav>
+                    <iframe src="project_placeholder.html" name="projFrame" class="projEmbed"></iframe>
+                -->
+                <nav></nav>
+                <iframe src="project_placeholder.html" name="projFrame" id="projFrame"></iframe>
             </div>
         </div>
     </body>

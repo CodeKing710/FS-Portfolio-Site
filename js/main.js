@@ -8,4 +8,4 @@
  * Uses personal framework/library (its a bit of both) called jCode
  * for all DOM manip and calculations or drawings
  */
-alert("I have been born!");
+// alert("I have been born!");
