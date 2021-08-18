@@ -1,0 +1,9 @@
+NEW! Project Pusher Script will take your commit message from the commit.txt file and commit the changes and push it to your origin remote to the assumed master branch of your project.
+NOTE: commit.txt should stay an untracked file (ommitted in the staging process since it'll reside in the project folder)
+
+UPDATES:
+- First commit using Project Pusher
+- Project page has navigation yay!
+- CSS debugging no more pesky bugs
+
+Bugs: Projects don't display properly in iframe

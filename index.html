@@ -20,36 +20,38 @@
     <body>
         <div id="wrapper">
             <section>
-                <h1>Carter Ervin</h1>
-                <h2>Software Developer</h2>
-                <hr />
-                <p>I started teaching myself to program when I was 12 and kept learning ever since. Now that I am old enough to be in the job field I decided to try and get my credentials ASAP so I can start applying.</p>
-                <h3><a href="./projects.html">My Projects</a></h3>
-                <p>Here is a small preview of some of the projects I have done. None of these previews are super impressive and are just little functions and tools made to just process data.</p>
-                <div>
-                    <h4>String Reversal</h4>
-                    <label for="revin">Input String: </label><input type="text" name="revin" id="strrev" />
-                    <a href="javascript:void(0);" onclick="revStr()">Reverse!</a>
-                    <p id="revStrOut"></p>
-                    <script>
-                        function revStr() {
-                            var str = document.getElementById("strrev").value;
-                            //Process array in reverse
-                            var rev = [];
-                            for(var i = str.length-1; i >= 0; i--)
-                                rev.push(str[i]);
+                <div style="padding: 0 10px;">
+                    <h1>Carter Ervin</h1>
+                    <h2>Software Developer</h2>
+                    <hr />
+                    <p>I started teaching myself to program when I was 12 and kept learning ever since. Now that I am old enough to be in the job field I decided to try and get my credentials ASAP so I can start applying.</p>
+                    <h3><a href="./projects.html">My Projects</a></h3>
+                    <p>Here is a small preview of some of the projects I have done. None of these previews are super impressive and are just little functions and tools made to just process data.</p>
+                    <div>
+                        <h4>String Reversal</h4>
+                        <label for="revin">Input String: </label><input type="text" name="revin" id="strrev" />
+                        <a href="javascript:void(0);" onclick="revStr()">Reverse!</a>
+                        <p id="revStrOut"></p>
+                        <script>
+                            function revStr() {
+                                var str = document.getElementById("strrev").value;
+                                //Process array in reverse
+                                var rev = [];
+                                for(var i = str.length-1; i >= 0; i--)
+                                    rev.push(str[i]);
 
-                            document.getElementById("revStrOut").innerHTML = rev.join("");
-                        }
+                                document.getElementById("revStrOut").innerHTML = rev.join("");
+                            }
+                        </script>
+                    </div>
+                    <hr />
+                    <h3>About Me</h3>
+                    <p>I am a 7 year self-taught programmer, proficient in many langauges but no prior record of work experience in the software field. In high school I wanted to make some extra side money so I built a website for a small business in town. The website doesn't have a back-end because they didn't think it was necessary to have a database with the amount of housing that they had available. The website is still live as of <span id="currentDate"></span> and resides at <a href="http://www.uworent.com" target="_blank">www.uworent.com</a> if you would like to check it out (Link also in projects). </p>
+                    <script>
+                        document.getElementById('currentDate').innerText = String(new Date().getUTCMonth()+1)+'-'+new Date().getUTCDate()+'-'+new Date().getUTCFullYear();
                     </script>
+                    <p>If you checked out the website above you may have noticed that the current color scheme is a common one for me, turns out it is for a lot of people.</p>
                 </div>
-                <hr />
-                <h3>About Me</h3>
-                <p>I am a 7 year self-taught programmer, proficient in many langauges but no prior record of work experience in the software field. In high school I wanted to make some extra side money so I built a website for a small business in town. The website doesn't have a back-end because they didn't think it was necessary to have a database with the amount of housing that they had available. The website is still live as of <span id="currentDate"></span> and resides at <a href="http://www.uworent.com" target="_blank">www.uworent.com</a> if you would like to check it out (Link also in projects). </p>
-                <script>
-                    document.getElementById('currentDate').innerText = String(new Date().getUTCMonth()+1)+'-'+new Date().getUTCDate()+'-'+new Date().getUTCFullYear();
-                </script>
-                <p>If you checked out the website above you may have noticed that the current color scheme is a common one for me, turns out it is for a lot of people.</p>
             </section>
             <footer>
                 <h3>Contact Me</h3>

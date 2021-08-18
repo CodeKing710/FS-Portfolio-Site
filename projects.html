@@ -17,41 +17,48 @@
                 './html_includes/finalCalc.html',
                 './html_includes/GPA.html',
                 './html_includes/LLS.html',
-                './html_includes/Quad.html',
+                './html_includes/Quad.html'
+            ];
+            var include_list_names = [
+                'APC',
+                'BBPQ',
+                'ELS',
+                'EZG',
+                'FGC',
+                'GPAC',
+                'LLS',
+                'QES'
             ];
             //Wait for pageload and begin building project frames
-            for(i=0;i<include_list.length;i++)
-                $("#projectWrapper nav").prepend("<a href=\""+include_list[i]+"\" target=\"projFrame\"></a>");
+            $(function(){
+                for(i=0;i<include_list.length;i+=1) {
+                    let navItems = document.createElement("a");
+                    navItems.href = include_list[i];
+                    navItems.target = "projFrame";
+                    navItems.innerHTML = include_list_names[i];
+                    document.getElementById("projNav").appendChild(navItems);
+                }
+                //Set widths
+                var nav = document.getElementById("projNav");
+                var len = nav.children.length;
+                for(i=0;i<len;i++)
+                    $("#projNav a").css("width",`${100/len}%`);
+            });
 		</script>
     </head>
     <body>
         <div id="wrapper">
-            <div>
-				<a href="./index.html">Home</a>
-			</div>
-            <div id="projectWrapper">
-                <!--Use JS to grab every html_include and wrap them-->
-                <!--General Wrapper Style-->
-                <!--
-                    <div class="projContainer">
-                        <label for="projframe#"><PROJ_NAME></label>
-                        <iframe src="<PATH_TO_PROJ>" class="projEmbed" title="<PROJ_NAME>"></iframe>
-                    </div>
-                -->
-
-                <!--Alternative to having multiple iframes open at once-->
-                <!--
-                    <nav>
-                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
-                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
-                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
-                        <a href="<PROJ_PATH>" target="projFrame"><PROJ_NAME></a>
-                    </nav>
-                    <iframe src="project_placeholder.html" name="projFrame" class="projEmbed"></iframe>
-                -->
-                <nav></nav>
-                <iframe src="project_placeholder.html" name="projFrame" id="projFrame"></iframe>
-            </div>
+            <section>
+                <nav id="projNav">
+                    <a href="./index.html">Home</a>
+                </nav>
+                <iframe src="./project_placeholder.html" name="projFrame" id="projFrame"></iframe>
+            </section>
+            <footer>
+                <h3>Contact Me</h3>
+                <p>cjrox31@gmail.com</p>
+                <p>1(800)285-5936</p>
+            </footer>
         </div>
     </body>
 </html>

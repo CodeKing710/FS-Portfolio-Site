@@ -610,31 +610,16 @@
 			var elems = this[0];
 			text = jCode.stringify(text);
 			this.loop(elems, function(elem){
-				//Put the text before the element
-				//Create elements
+				//Create element storage for innerHTML
 				var newTag;
-				//Scan text for the outer element to be for the element
-				if(text.indexOf("<") <= 0) {
-					//The text has no HTML, put it inside of a <span>
-					newTag = document.createElement("SPAN");
-				} else if(text.indexOf("<") <= 3) {
-					var tagName = text.split("");
-					for(var i = 0; i < tagName.length; i++) {
-						if(tagName[i] === ">") {
-							tagName = tagName.splice(i);
-							tagName = tagName.splice(0,1);
-							tagName = tagName.join();
-							newTag = document.createElement(tagName);
-							break;
-						}
-					}
-				} else {
-					//Text may have HTML, but it isn't a start tag, default to span
-					newTag = document.createElement("SPAN");
-				}
+				//Container element to parse new HTML
+				newTag = document.createElement("div");
 				//Append text
 				newTag.innerHTML = text;
-				elem.appendChild(newTag);
+				// console.log(newTag);
+				// console.log(text);
+				for(i=0;i<newTag.childNodes.length;i++)
+					elem.appendChild(newTag.childNodes[i]);
 			});
 			return this;
 		},
@@ -642,31 +627,13 @@
 			var elems = this[0];
 			text = jCode.stringify(text);
 			this.loop(elems, function(elem){
-				//Put the text before the element
-				//Create elements
+				//Create element container
 				var newTag;
-				//Scan text for the outer element to be for the element
-				if(text.indexOf("<") <= 0) {
-					//The text has no HTML, put it inside of a <span>
-					newTag = document.createElement("SPAN");
-				} else if(text.indexOf("<") <= 3) {
-					var tagName = text.split("");
-					for(var i = 0; i < tagName.length; i++) {
-						if(tagName[i] === ">") {
-							tagName = tagName.splice(i);
-							tagName = tagName.splice(0,1);
-							tagName = tagName.join();
-							newTag = document.createElement(tagName);
-							break;
-						}
-					}
-				} else {
-					//Text may have HTML, but it isn't a start tag, default to span
-					newTag = document.createElement("SPAN");
-				}
+				newTag = document.createElement("div");
 				//Append text
 				newTag.innerHTML = text;
-				elem.insertBefore(newTag, elem.childNodes[0]);
+				for(i=newTag.childNodes.length;i<=0;i--)
+					elem.insertBefore(newTag.childNodes[i], elem.childNodes[0]);
 			});
 			return this;
 		},
@@ -677,25 +644,11 @@
 				//Put the text after the element in it's lineup
 				//Create elements
 				var newTag;
-				//Scan text for the outer element to be for the element
-				if(text.indexOf("<") < 0) {
-					//The text has no HTML, put it inside of a <span>
-					newTag = document.createElement("SPAN");
-				} else if(text.indexOf("<") > -1) {
-					var tagName = text.split("");
-					for(var i = 0; i < tagName.length; i++) {
-						if(tagName[i] === ">") {
-							tagName.splice(i);
-							tagName.splice(0,1);
-							tagName = tagName.join("");
-							newTag = document.createElement(tagName);
-							break;
-						}
-					}
-				}
+				newTag = document.createElement("div");
 				//Append text
 				newTag.innerHTML = text;
-				elem.parentNode.insertBefore(newTag, elem.nextSibling);
+				for(i=newTag.childNodes.length;i<=0;i--)
+					elem.parentNode.insertBefore(newTag.childNodes[i], elem.nextSibling);
 			});
 			return this;
 		},
@@ -703,28 +656,13 @@
 			var elems = this[0];
 			text = jCode.stringify(text);
 			this.loop(elems, function(elem){
-				//Put the text before the element
-				//Create elements
+				//Container element
 				var newTag;
-				//Scan text for the outer element to be for the element
-				if(text.indexOf("<") < 0) {
-					//The text has no HTML, put it inside of a <span>
-					newTag = document.createElement("SPAN");
-				} else if(text.indexOf("<") > -1) {
-					var tagName = text.split("");
-					for(var i = 0; i < tagName.length; i++) {
-						if(tagName[i] === ">") {
-							tagName = tagName.splice(i);
-							tagName = tagName.splice(0,1);
-							tagName = tagName.join();
-							newTag = document.createElement(tagName);
-							break;
-						}
-					}
-				}
+				newTag = document.createElement("div");
 				//Append text
 				newTag.innerHTML = text;
-				elem.parentNode.insertBefore(newTag, elem);
+				for(i=newTag.childNodes.length;i<=0;i--)
+					elem.parentNode.insertBefore(newTag.childNodes[i], elem);
 			});
 			return this;
 		}
